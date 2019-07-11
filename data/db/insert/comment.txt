@@ -1,0 +1,13 @@
+1|1|phazony|ca va, pas trop mal, mais le dossier fait chier...|2017-02-08 18:46:12|f
+2|3|phazony|pas trop non|2017-02-08 18:56:12|f  
+3|1|phazony|Urggg...|2017-02-08 19:01:17|t
+4|4|Emya|c'est fermé, on ne peut plu rien ecrire ici normalement|2017-02-08 19:01:17|f
+5|5|phazony|ca va et toi ?|2017-02-08 19:01:17|f
+6|7|phazony|ouais...|2017-02-08 19:01:17|f
+7|5|Emya|ca va aussi, on est un peut a la bourre, mais bon|2017-02-08 19:01:17|f
+8|5|phazony|bah, on va y arriver|2017-02-08 19:01:17|f
+9|6|Emya|Ah?|2017-02-08 19:01:17|f
+10|6|Emya|Je fesait quoi deja ?|2017-02-08 19:01:17|f
+11|5|David|Bah, c'est pas si mal|2017-02-08 19:01:17|f
+12|5|David|Qu'est-ce qui peut arriver ?|2017-02-08 19:01:17|f
+13|5|Emya|C'est qui lui ?|2017-02-08 19:01:17|f
