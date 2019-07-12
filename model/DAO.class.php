@@ -33,7 +33,8 @@
         function createTopic($nom, $nomCreateur) {
           $sth = $this->db->prepare("INSERT INTO topic (id, name, nameCreator, creation, closed)
             VALUES (MAX(id)+1, :name, :nameCreator, DATE_FORMAT(NOW(), '%Y-%m-%d %T'), 'f')");
-          $sth->bindParam(":name",$nom);$sth->bindParam(":nameCreator",$nomCreateur);
+          $sth->bindParam(":name",$nom);
+          $sth->bindParam(":nameCreator",$nomCreateur);
           $sth->execute();
         }
 
