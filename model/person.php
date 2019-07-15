@@ -5,7 +5,7 @@ require_once("./databaseConnection.php");
 class person {
 
     public $id_person;
-    public $lasname_person;
+    public $lastname_person;
     public $firstname_person;
     public $mail_person;
     public $username;
@@ -20,6 +20,8 @@ class person {
         $this->password = $password;
     }
 
+
+    
 
 
 

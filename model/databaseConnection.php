@@ -1,15 +1,19 @@
 <?php
     $servername = "localhost";
-    $username = "";
-    $password = "";
+    $username = "username";
+    $password = "password";
     
     // Create connection
-    $conn = new mysqli($servername, $username, $password);
+    try {
+        $dbh = new PDO('mysql:host=localhost;dbname=bddwebproject', $username, $password);
+        echo "Connected successfully";
+    } catch (PDOException $e) {
+        die("Connection failed: " . $e);
+    }
     
     // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    echo "Connected successfully";
+    // if ($dbh->) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // }
 
 ?>
