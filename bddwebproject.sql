@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 16 Juillet 2019 à 15:57
+-- Généré le :  Mar 16 Juillet 2019 à 16:10
 -- Version du serveur :  5.6.24
 -- Version de PHP :  5.6.8
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `bddwebproject`
 --
+CREATE DATABASE IF NOT EXISTS `bddwebproject` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bddwebproject`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `component`
 --
 
+DROP TABLE IF EXISTS `component`;
 CREATE TABLE IF NOT EXISTS `component` (
   `id_component` int(8) NOT NULL,
   `id_module` int(8) NOT NULL,
@@ -57,6 +60,7 @@ INSERT INTO `component` (`id_component`, `id_module`, `name_component`, `coeff_c
 -- Structure de la table `mark_component`
 --
 
+DROP TABLE IF EXISTS `mark_component`;
 CREATE TABLE IF NOT EXISTS `mark_component` (
   `id_component` int(8) NOT NULL,
   `id_studient` int(8) NOT NULL,
@@ -88,6 +92,7 @@ INSERT INTO `mark_component` (`id_component`, `id_studient`, `mark`, `date_exam`
 -- Structure de la table `module`
 --
 
+DROP TABLE IF EXISTS `module`;
 CREATE TABLE IF NOT EXISTS `module` (
   `id_module` int(8) NOT NULL,
   `name_module` varchar(128) NOT NULL,
@@ -113,6 +118,7 @@ INSERT INTO `module` (`id_module`, `name_module`, `number_module`) VALUES
 -- Structure de la table `person`
 --
 
+DROP TABLE IF EXISTS `person`;
 CREATE TABLE IF NOT EXISTS `person` (
   `id_person` int(8) NOT NULL,
   `lastname_person` varchar(32) NOT NULL,
@@ -138,6 +144,7 @@ INSERT INTO `person` (`id_person`, `lastname_person`, `firstname_person`, `mail_
 -- Structure de la table `staff`
 --
 
+DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
   `id_teacher` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -156,6 +163,7 @@ INSERT INTO `staff` (`id_teacher`) VALUES
 -- Structure de la table `student`
 --
 
+DROP TABLE IF EXISTS `student`;
 CREATE TABLE IF NOT EXISTS `student` (
   `id_student` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -174,6 +182,7 @@ INSERT INTO `student` (`id_student`) VALUES
 -- Structure de la table `student_module`
 --
 
+DROP TABLE IF EXISTS `student_module`;
 CREATE TABLE IF NOT EXISTS `student_module` (
   `id_module` int(8) NOT NULL,
   `id_studient` int(8) NOT NULL
