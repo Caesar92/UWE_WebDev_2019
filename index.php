@@ -6,7 +6,7 @@
     // echo "coucou";
     // require_once("./model/databaseConnection.php");
     
-    require_once("./controler/home.ctrl.php");
+    // require_once("./controler/home.ctrl.php");
 
     
 
@@ -15,4 +15,13 @@
 //  exit;
 //}
 //header('location: controler/main.ctrl.php');
+
+
+require_once('model/module.php');
+$resultWithMark = module::getModuleComponentMarkByStudent(1);
+print_r($resultWithMark);
+
+$resultWithoutMark = module::getModuleWithoutMarkByStudent(1);
+print_r($resultWithoutMark)
+
 ?>

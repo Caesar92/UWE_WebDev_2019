@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 16 Juillet 2019 à 14:34
+-- Généré le :  Mar 16 Juillet 2019 à 15:57
 -- Version du serveur :  5.6.24
 -- Version de PHP :  5.6.8
 
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `module` (
   `id_module` int(8) NOT NULL,
   `name_module` varchar(128) NOT NULL,
   `number_module` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `module`
@@ -104,7 +104,8 @@ INSERT INTO `module` (`id_module`, `name_module`, `number_module`) VALUES
 (4, 'Content Management System', 3),
 (5, 'Legal Ethical Social and Professional Issues', 4),
 (6, 'Web Development Frameworks', 5),
-(7, 'Web Technologies', 6);
+(7, 'Web Technologies', 6),
+(8, 'Mathematics', 7);
 
 -- --------------------------------------------------------
 
@@ -186,6 +187,7 @@ INSERT INTO `student_module` (`id_module`, `id_studient`) VALUES
 (2, 1),
 (3, 1),
 (4, 1),
+(8, 1),
 (5, 2),
 (6, 2),
 (7, 2);
@@ -249,7 +251,7 @@ ALTER TABLE `component`
 -- AUTO_INCREMENT pour la table `module`
 --
 ALTER TABLE `module`
-  MODIFY `id_module` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id_module` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `person`
 --

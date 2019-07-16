@@ -40,20 +40,33 @@ class module {
     }
 
     public static function getModuleComponentMarkByStudent($id_student) {
-        $sql = "SELECT S.id_student, M.name_module, M.number_module,C.name_component,C.coeff_component,MC.mark
+        $sqlModulesWithMark = "SELECT S.id_student, M.name_module, M.number_module,C.name_component,C.coeff_component,MC.mark
                 FROM student S
-                    JOIN student_module SM ON SM.id_student=S.id_student
-                    JOIN module M ON M.id_module=SM.id_module
-                    JOIN mark_component MC ON SM.id_studient=MC.id_studient
-                    JOIN component C ON C.id_component=MC.id_component
-                    LEFT JOIN student_module SM ON SM.id_module=C.id_module
-                WHERE id_student=:id_student;";
-        $sth = $dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                JOIN mark_component MC ON S.id_student=MC.id_studient
+                JOIN component C ON C.id_component=MC.id_component
+                JOIN module M ON M.id_module=C.id_module
+                WHERE id_student=1";
+        $sth =  $GLOBALS['dbh']->prepare($sqlModulesWithMark, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array(':id_student' => $id_student));
-        $results = $sth->fetchAll();
 
+        $tabWithMark = $sth->fetchAll();
+        return $tabWithMark;
+    }
 
-        return $tabOfMark
+    public static function getModuleWithoutMarkByStudent($id_student) {
+        $sqlModulesWithoutMark= "SELECT SM.id_module
+                                FROM student_module SM
+                                WHERE SM.id_studient=1 AND SM.id_module NOT IN (
+                                SELECT C.id_module
+                                FROM component C
+                                JOIN mark_component MC ON MC.id_component=C.id_component
+                                WHERE MC.id_studient=1
+                                );";
+        $sth = $GLOBALS['dbh']->prepare($sqlModulesWithoutMark, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array(':id_student' => $id_student));
+
+        $tabWithoutMark = $sth->fetchAll();
+        return $tabWithoutMark;
     }
 
 
