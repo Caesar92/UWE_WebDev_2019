@@ -20,7 +20,7 @@ class person {
         $this->password = $password;
     }
 
-
+    public function __construct($)
     
 
 

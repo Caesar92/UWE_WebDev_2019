@@ -10,7 +10,7 @@
         $this->$mark = $mark;
     }
 
-    
+    public static function get
 
 
 ?>
