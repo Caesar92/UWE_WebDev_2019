@@ -13,7 +13,7 @@ class teacher extends person {
         $this->password = $password;
     }
 
-    public function insertNewTeacher($lastname_person,$firstname_person,$mail_person,$username,$password) {
+    public function insertNewStaff$lastname_person,$firstname_person,$mail_person,$username,$password) {
         $sql = "INSERT INTO person(lasname_person,firstname_person,mail_person,username,password) VALUES
         (:id_person,:lastname_person,:firstname_person,:mail_person,:username,:password)";
     }

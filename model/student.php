@@ -2,7 +2,7 @@
 
 require_once("./person.php");
 
-class teacher extends person {
+class student extends person {
 
     public function __construct($id_person,$lastname_person,$firstname_person,$mail_person,$username,$password) {
         $this->$id_person = $id_person;
@@ -13,7 +13,17 @@ class teacher extends person {
         $this->password = $password;
     }
 
-    
+    public static function getAllStudents() {
+        $sql = "SELECT P.id_person,P.firstname_person, P.lastname_person 
+                FROM person P
+                    JOIN student S ON S.id_student=P.id_person";
+        $sth = $dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array());
+        $results = $sth->fetchAll();
+        return $results;
+    }
+
+
 }
 
 ?>

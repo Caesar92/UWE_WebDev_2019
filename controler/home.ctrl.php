@@ -20,8 +20,6 @@
         require('view/login.php';)
     }
 
-    function 
-
 
     $result = module::getModuleByName("Mathematics");
     print_r($result);

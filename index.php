@@ -17,9 +17,9 @@
 //header('location: controler/main.ctrl.php');
 
 
-require_once('model/module.php');
-// $resultWithMark = module::getMarkOfStudentByIdModule(2);
-module::modifyModuleNameByIdModule(8,"Maths");
+require_once('model/person.php');
+print_r(person::verifyInformationConnexion("jeremy"));
+// print_r("test");
 
 // $resultWithoutMark = module::getModuleWithoutMarkByStudent(1);
 // print_r($resultWithoutMark);

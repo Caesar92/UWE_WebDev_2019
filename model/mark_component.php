@@ -10,7 +10,11 @@
         $this->$mark = $mark;
     }
 
-    public static function get
+    public static function getAllComponentByIdModuleAndIdStudent($id_module,$id_studient) {
 
+
+    }
+
+    
 
 ?>

@@ -14,6 +14,7 @@ class module {
         $this->$number_module = $number_module;
     }
 
+    // 
     public static function getModuleByName($name_module) {
         
         $sql = "SELECT id_module,name_module
@@ -26,7 +27,7 @@ class module {
 
     }
 
-    public static function getModuleByIdPerson($id_student) {
+    public static function getModuleByIdStudent($id_student) {
         $sql = "SELECT M.id_module,M.name_module
         FROM module M
             JOIN student_module SM ON M.id_module=SM.id_module 
@@ -43,7 +44,7 @@ class module {
                 JOIN mark_component MC ON S.id_student=MC.id_studient
                 JOIN component C ON C.id_component=MC.id_component
                 JOIN module M ON M.id_module=C.id_module
-                WHERE id_student=1
+                WHERE S.id_student=:id_student
                 GROUP BY M.name_module";
         $sth =  $GLOBALS['dbh']->prepare($sqlModulesWithMark, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array(':id_student' => $id_student));
@@ -63,7 +64,7 @@ class module {
                                 SELECT C.id_module
                                 FROM component C
                                 JOIN mark_component MC ON MC.id_component=C.id_component
-                                WHERE MC.id_studient=1
+                                WHERE MC.id_studient=:id_student
                                 ));";
         $sth = $GLOBALS['dbh']->prepare($sqlModulesWithoutMark, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array(':id_student' => $id_student));
@@ -72,7 +73,7 @@ class module {
         return $tabWithoutMark;
     }
 
-    public static function getMarkOfStudentByIdModule($id_module) {
+    public static function getMarkOfStudentsByIdModule($id_module) {
         $sql = "SELECT P.firstname_person,P.lastname_person, AVG(MC.mark)AS \"Average\"
                 FROM component C
                     JOIN mark_component MC ON MC.id_component=C.id_component
@@ -87,6 +88,19 @@ class module {
         return $tab;
 
 
+    }
+
+    public static function getMarkOfStudentsByIdModule() {
+        $sql = "SELECT P.firstname_person,P.lastname_person, AVG(MC.mark)AS \"Average\"
+                FROM component C
+                    JOIN mark_component MC ON MC.id_component=C.id_component
+                    JOIN student S ON S.id_student=MC.id_studient
+                    JOIN person P ON P.id_person=S.id_student
+                GROUP BY P.id_person;";
+        $sth = $GLOBALS['dbh']->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array());
+        $tab = $sth->fetchAll();
+        return $tab;
     }
 
     public static function getStudentWithoutMarkByIdModule($id_module) {
@@ -127,8 +141,45 @@ class module {
     }
     
     public static function getAllModules() {
-        
+        $sql = "SELECT M.id_module,M.name_module,M.number_module
+                FROM module M";
+        $sth = $GLOBALS['dbh']->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array());
+
+        $tab = $sth->fetchAll();
+        return $tab; 
     }
+
+    public static function insertModule($name_module,$number_module) {
+        $sql = "INSERT INTO module(name_module,number_module)
+                VALUES (:name_module,:number_module)";
+        
+        try {
+            $stmt = $GLOBALS['dbh']->prepare($sql);
+            $stmt->bindParam(':name_module', $name_module, PDO::PARAM_STR);
+            $stmt->bindParam(':number_module', $number_module, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Connection failed: ' . $e->getMessage();
+        }
+    }
+
+    public static function getStudentNotInModuleByIdModule($id_module) {
+        $sql = "SELECT P.id_person,P.firstname_person,P.lastname_person
+                FROM person P
+                    JOIN student S ON S.id_student=P.id_person
+                WHERE S.id_student NOT IN
+                (SELECT S.id_student
+                FROM student S
+                    JOIN student_module SM ON SM.id_studient=S.id_student
+                WHERE SM.id_module=:id_module)";
+        $sth = $GLOBALS['dbh']->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array(':id_module' => $id_module));
+        $tab = $sth->fetchAll();
+        return $tab; 
+    }
+
+
 
 }
 

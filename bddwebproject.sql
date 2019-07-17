@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 16 Juillet 2019 à 16:10
+-- Généré le :  Mer 17 Juillet 2019 à 18:06
 -- Version du serveur :  5.6.24
 -- Version de PHP :  5.6.8
 
@@ -110,7 +110,7 @@ INSERT INTO `module` (`id_module`, `name_module`, `number_module`) VALUES
 (5, 'Legal Ethical Social and Professional Issues', 4),
 (6, 'Web Development Frameworks', 5),
 (7, 'Web Technologies', 6),
-(8, 'Mathematics', 7);
+(8, 'Maths', 7);
 
 -- --------------------------------------------------------
 
@@ -146,14 +146,14 @@ INSERT INTO `person` (`id_person`, `lastname_person`, `firstname_person`, `mail_
 
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
-  `id_teacher` int(8) NOT NULL
+  `id_staff` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `staff`
 --
 
-INSERT INTO `staff` (`id_teacher`) VALUES
+INSERT INTO `staff` (`id_staff`) VALUES
 (3),
 (4);
 
@@ -197,6 +197,7 @@ INSERT INTO `student_module` (`id_module`, `id_studient`) VALUES
 (3, 1),
 (4, 1),
 (8, 1),
+(2, 2),
 (5, 2),
 (6, 2),
 (7, 2);
@@ -233,7 +234,7 @@ ALTER TABLE `person`
 -- Index pour la table `staff`
 --
 ALTER TABLE `staff`
-  ADD PRIMARY KEY (`id_teacher`);
+  ADD PRIMARY KEY (`id_staff`);
 
 --
 -- Index pour la table `student`
@@ -287,7 +288,7 @@ ADD CONSTRAINT `fk-mark_component-student` FOREIGN KEY (`id_studient`) REFERENCE
 -- Contraintes pour la table `staff`
 --
 ALTER TABLE `staff`
-ADD CONSTRAINT `fk-id_teachert-id_person` FOREIGN KEY (`id_teacher`) REFERENCES `person` (`id_person`);
+ADD CONSTRAINT `fk-id_staff-id_person` FOREIGN KEY (`id_staff`) REFERENCES `person` (`id_person`);
 
 --
 -- Contraintes pour la table `student`

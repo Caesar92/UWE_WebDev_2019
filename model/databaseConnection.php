@@ -6,7 +6,7 @@
     // Create connection
     try {
         $dbh = new PDO('mysql:host=localhost;dbname=bddwebproject', $username, $password);
-        echo "Connected successfully";
+        //echo "Connected successfully";
     } catch (PDOException $e) {
         die("Connection failed: " . $e);
     }

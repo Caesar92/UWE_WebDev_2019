@@ -1,0 +1,129 @@
+/* =================================================================*/
+/*                              HEADER                              */
+/* =================================================================*/
+
+/*    Taille image et bandeauen fonction de la taille de l'écran    */
+@media (max-width: 390px) {
+    .img_Logo{
+        height: 65px;
+        width: 150px;
+        display: block;
+        margin: auto;
+        
+    }
+    .bg-red_UWE {
+        background-color: rgb(227, 6, 19) !important;
+        min-height: 70px;
+        max-height: 10%;
+        overflow: hidden;
+    }
+    .navbar{
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (min-width: 390px){
+    .img_Logo{
+        height: 80px;
+        width: 200px;
+
+    }
+
+    .bg-red_UWE {
+        background-color: rgb(227, 6, 19) !important;
+        min-height: 90px;
+        max-height: 90px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 9999;
+    }
+
+    .navbar-nav .dropdown-menu{
+        position: absolute;
+        left: -40px;
+        background-color: beige;
+    }
+}
+
+/* -----------------------------------------------------------------*/
+/*                  Desactiver la fleche du dropdown                */
+.dropdown-toggle::after {
+    display:none;
+}
+
+/* -----------------------------------------------------------------*/
+/*                          Couleur de base du texte                */
+
+.username{
+    color: white;
+    text-decoration: none;
+}
+
+/* -----------------------------------------------------------------*/
+/*                          Image Account                           */
+.imageAccount{
+    width: 36px; 
+    height: 36px;
+    display: inline-block;
+    background-image:  url("../image/account_circle_white.png");
+    background-repeat: no-repeat;
+}
+
+/* =================================================================*/
+/*                              FOOTER                              */
+/* =================================================================*/
+.footer{
+    background-color: #242729;
+    min-height: 100px;
+    max-width: 100% !important; 
+    width: 100% !important;
+    position: absolute;
+    bottom:0; 
+}
+/* -----------------------------------------------------------------*/
+.footerText{
+    color: white;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+/* =================================================================*/
+/*                               BODY                               */
+/* =================================================================*/
+
+.bodyOfPage{
+    margin-top: 125px;
+}
+
+.card{
+    width: 95%;
+    margin-right: 2.5%;
+    margin-left: auto;
+    margin-bottom: 2.5%;
+    background-color: rgb(241, 241, 241);
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: white;
+ }
+
+.btn-changeInformation{
+    left: 0;
+}
+
+.btn-lg{
+    width: 30%;
+    margin-left: 1%;
+    margin-left: 1%;
+    margin-bottom: 15px;
+}
+
+.btn-show{
+    right: 20px;
+    position: absolute;
+    width: 40%;
+}
