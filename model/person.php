@@ -20,7 +20,17 @@ class person {
         $this->password = $password;
     }
 
-    public function __construct($)
+    public static function showInformationByIdPerson($id_person) {
+        $sql="SELECT id_person,firstname_person,lastname_person,mail_person,username
+        FROM person
+        where id_person:id_person;";
+        $sth = $GLOBALS['dbh']->prepare($sqlModulesWithoutMark, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array(':id_person' => $id_student));
+
+        $tabWithoutMark = $sth->fetchAll();
+        return $tabWithoutMark;
+
+    } 
     
 
 

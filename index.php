@@ -4,7 +4,7 @@
     // $controller = new Controller();
     // $controller = invoke();
     // echo "coucou";
-    // require_once("./model/databaseConnection.php");
+    //require_once("./model/databaseConnection.php");
     
     // require_once("./controler/home.ctrl.php");
 
@@ -19,9 +19,9 @@
 
 require_once('model/module.php');
 $resultWithMark = module::getModuleComponentMarkByStudent(1);
-print_r($resultWithMark);
+var_dump($resultWithMark);
 
-$resultWithoutMark = module::getModuleWithoutMarkByStudent(1);
-print_r($resultWithoutMark)
+// $resultWithoutMark = module::getModuleWithoutMarkByStudent(1);
+// print_r($resultWithoutMark);
 
 ?>
