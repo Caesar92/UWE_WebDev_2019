@@ -18,8 +18,8 @@
 
 
 require_once('model/module.php');
-$resultWithMark = module::getModuleComponentMarkByStudent(1);
-var_dump($resultWithMark);
+// $resultWithMark = module::getMarkOfStudentByIdModule(2);
+module::modifyModuleNameByIdModule(8,"Maths");
 
 // $resultWithoutMark = module::getModuleWithoutMarkByStudent(1);
 // print_r($resultWithoutMark);

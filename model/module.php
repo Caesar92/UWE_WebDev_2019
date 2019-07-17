@@ -73,7 +73,7 @@ class module {
     }
 
     public static function getMarkOfStudentByIdModule($id_module) {
-        $sql = "SELECT P.firstname_person,P.lastname_person, AVG(MC.mark)AS "Average"
+        $sql = "SELECT P.firstname_person,P.lastname_person, AVG(MC.mark)AS \"Average\"
                 FROM component C
                     JOIN mark_component MC ON MC.id_component=C.id_component
                     JOIN student S ON S.id_student=MC.id_studient
@@ -100,14 +100,35 @@ class module {
                 JOIN component C ON C.id_component=MC.id_component
                 WHERE C.id_module=2);";
         $sth = $GLOBALS['dbh']->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array(':id_student' => $id_student));
+        $sth->execute(array(':id_module' => $id_module));
 
         $tab = $sth->fetchAll();
         return $tab;
+    }
 
+    public static function modifyModuleNameByIdModule($id_module,$name_module) {
+        $sql = "UPDATE module
+                SET name_module=:name_module
+                WHERE id_module=:id_module";
+         $stmt = $GLOBALS['dbh']->prepare($sql);
+         $stmt->bindParam(':id_module', $id_module, PDO::PARAM_STR);
+         $stmt->bindParam(':name_module', $name_module, PDO::PARAM_STR); 
+         $stmt->execute();
+    }
 
+    public static function modifyNumberModuleByIdModule($id_module,$number_module) {
+        $sql = "UPDATE module
+                SET number_module=:number_module
+                WHERE id_module=:id_module";
+         $stmt = $GLOBALS['dbh']->prepare($sql);
+         $stmt->bindParam(':id_module', $id_module, PDO::PARAM_STR); 
+         $stmt->bindParam(':number_module', $number_module, PDO::PARAM_STR); 
+         $stmt->execute();
     }
     
+    public static function getAllModules() {
+        
+    }
 
 }
 
