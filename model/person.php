@@ -34,21 +34,6 @@ class person {
 
     public static function verifyInformationConnexion($username) {
         
-        //Part to know if person is staff or student
-        $sql1 = "SELECT P.username, P.password, P.firstname_person, P.lastname_person
-        FROM person P
-            JOIN student S ON S.id_student=P.id_person
-        WHERE P.username=:username";
-        $sth = $GLOBALS['dbh']->prepare($sql1, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array(':username' => $username));
-        $isStudent= $sth->fetchAll();
-        if (count($isStudent) == 0) {
-            $role = "staff";
-        }
-        else {
-            $role = "student";
-        };
-
         // Creation de l'array de la personne
         $sql = "SELECT P.username, P.password, P.firstname_person, P.lastname_person
         FROM person P
@@ -56,6 +41,24 @@ class person {
         $sth = $GLOBALS['dbh']->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $sth->execute(array(':username' => $username));
         $tab= $sth->fetchAll();
+
+        //Part to know if person is staff or student
+        if (count($tab) == 0) {
+            $sql1 = "SELECT P.username, P.password, P.firstname_person, P.lastname_person
+            FROM person P
+                JOIN student S ON S.id_student=P.id_person
+            WHERE P.username=:username";
+            $sth = $GLOBALS['dbh']->prepare($sql1, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':username' => $username));
+            $isStudent= $sth->fetchAll();
+            if (count($isStudent) == 0) {
+                $role = "staff";
+            }
+            else {
+                $role = "student";
+            };
+        }
+
         $tab[0][] = $role;
         return $tab[0];
 

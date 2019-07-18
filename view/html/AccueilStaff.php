@@ -75,6 +75,11 @@
                 </div>
                 <div class="container">
                     <div style="margin-left: 5%; margin-right: auto">
+                        <?php
+                        require_once("../../model/")
+                        foreach ($tabModule as $module) {
+                            echo "<button onclick=\"location.href='\../../controler/AccueilStaff.ctrl.php'\" type=\"button\" class=\"btn btn-info btn-lg\">".$module[0]."</button>";
+                        }
                         <button type="button" class="btn btn-info btn-lg">Web Programming</button>
                         <button type="button" class="btn btn-info btn-lg">Web Design</button>
                         <button type="button" class="btn btn-info btn-lg">Legal Ethical Social and Professional
@@ -82,6 +87,7 @@
                         <button type="button" class="btn btn-info btn-lg">Content Management System</button>
                         <button type="button" class="btn btn-info btn-lg">WebDevelopmentFrameworks</button>
                         <button type="button" class="btn btn-info btn-lg">WebTechnologies</button>
+                        ?>                    
                     </div>
                 </div>
                 <div class="text-center">

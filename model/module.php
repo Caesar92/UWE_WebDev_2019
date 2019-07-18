@@ -38,6 +38,7 @@ class module {
         return $results;
     }
 
+    
     public static function getModuleComponentMarkByStudent($id_student) {
         $sqlModulesWithMark = "SELECT M.name_module, M.number_module,C.name_component,C.coeff_component,MC.mark
                 FROM student S
